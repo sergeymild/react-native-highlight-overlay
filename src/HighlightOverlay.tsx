@@ -1,9 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { RNHoleView } from "react-native-hole-view/src";
-import type Animated from "react-native-reanimated";
 import { FadeIn, FadeOut } from "react-native-reanimated";
-import type { RectProps } from "react-native-svg";
 import { viewHelpers } from "react-native-jsi-view-helpers";
 
 import { useHighlightableElements } from "./context";
@@ -32,8 +30,6 @@ export type OverlayStyle = {
 	opacity?: number;
 };
 
-export type EnteringAnimation = Animated.AnimateProps<RectProps>["entering"];
-
 export type HighlightOverlayProps = {
 	/**
 	 * The id of the highlighted element. If `undefined`, `null`, or if the id does not exist,
@@ -60,30 +56,6 @@ export type HighlightOverlayProps = {
 	 * @since 1.3
 	 */
 	overlayStyle?: OverlayStyle;
-
-	/**
-	 * The animation when the overlay is entering the screen. Defaults to `FadeIn`.
-	 * Set to `null` (not `undefined`!) to disable animation.
-	 *
-	 * @default FadeIn
-	 * @example
-	 * import { FadeIn } from "react-native-reanimated";
-	 * <HighlightOverlay entering={FadeIn} />
-	 * @since 1.3
-	 */
-	entering?: EnteringAnimation | null;
-
-	/**
-	 * The animation when the overlay is exiting the screen. Defaults to `FadeOut`.
-	 * Set to `null` (not `undefined`!) to disable animation.
-	 *
-	 * @default undefined
-	 * @example
-	 * import { FadeOut } from "react-native-reanimated";
-	 * <HighlightOverlay exiting={FadeOut} />
-	 * @since 1.3
-	 */
-	exiting?: EnteringAnimation | null;
 };
 
 /**
@@ -101,8 +73,6 @@ const HighlightOverlay = React.memo(
 		highlightedElementId,
 		onDismiss,
 		overlayStyle = DEFAULT_OVERLAY_STYLE,
-		entering = FadeIn,
-		exiting = FadeOut,
 		onHighlightElement,
 	}: HighlightOverlayProps) => {
 		const [elements, { setCurrentActiveOverlay }] = useHighlightableElements();
@@ -120,13 +90,11 @@ const HighlightOverlay = React.memo(
 
 		useEffect(() => {
 			setCurrentActiveOverlay(
-				highlightedElementId == null
-					? null
-					: { color, opacity, entering, exiting, onDismiss }
+				highlightedElementId == null ? null : { color, opacity, FadeIn, FadeOut, onDismiss }
 			);
 			// Dependency array should NOT include `onDismiss` prop
 			// eslint-disable-next-line react-hooks/exhaustive-deps
-		}, [color, entering, exiting, highlightedElementId, opacity, setCurrentActiveOverlay]);
+		}, [color, highlightedElementId, opacity, setCurrentActiveOverlay]);
 
 		useEffect(() => {
 			if (!hasContent) return;
@@ -190,7 +158,6 @@ const HighlightOverlay = React.memo(
 		prevProps.highlightedElementId === nextProps.highlightedElementId &&
 		prevProps.overlayStyle?.color === nextProps.overlayStyle?.color &&
 		prevProps.overlayStyle?.opacity === nextProps.overlayStyle?.opacity &&
-		prevProps.entering === nextProps.entering
 );
 HighlightOverlay.displayName = "HighlightOverlay";
 export default HighlightOverlay;
