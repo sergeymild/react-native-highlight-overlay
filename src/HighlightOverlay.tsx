@@ -157,7 +157,7 @@ const HighlightOverlay = React.memo(
 		// We need this here so we don't check the `onDismiss` prop.
 		prevProps.highlightedElementId === nextProps.highlightedElementId &&
 		prevProps.overlayStyle?.color === nextProps.overlayStyle?.color &&
-		prevProps.overlayStyle?.opacity === nextProps.overlayStyle?.opacity &&
+		prevProps.overlayStyle?.opacity === nextProps.overlayStyle?.opacity
 );
 HighlightOverlay.displayName = "HighlightOverlay";
 export default HighlightOverlay;

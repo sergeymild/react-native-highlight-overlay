@@ -1,6 +1,6 @@
 {
   "name": "react-native-highlight-overlay",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A tinted overlay that allows one or more elements to be highlighted (non-tinted)",
   "main": "src/index",
   "react-native": "src/index",
@@ -20,65 +20,31 @@
     "!**/__mocks__"
   ],
   "scripts": {
-    "test": "jest",
     "typescript": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "example": "yarn --cwd example",
     "pods": "cd example && pod-install --quiet",
     "bootstrap": "yarn example && yarn && yarn pods"
   },
-  "keywords": [
-    "react-native",
-    "ios",
-    "android",
-    "web",
-    "overlay",
-    "highlight",
-    "focus",
-    "typed",
-    "typescript",
-    "tooltip",
-    "tutorial",
-    "hint",
-    "walkthrough"
-  ],
-  "repository": "https://github.com/Charanor/react-native-highlight-overlay",
-  "author": "Jesper Sporron <jesper.sporron@gmail.com> (https://github.com/Charanor)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Charanor/react-native-highlight-overlay/issues"
-  },
-  "homepage": "https://github.com/Charanor/react-native-highlight-overlay#readme",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
   "devDependencies": {
-    "@commitlint/config-conventional": "^11.0.0",
     "@react-native-community/eslint-config": "^3.0.2",
-    "@release-it/conventional-changelog": "^2.0.0",
-    "@types/jest": "^26.0.0",
-    "@types/lodash.isequal": "^4.5.5",
     "@types/react": "^16.9.19",
     "@types/react-native": "^0.64.12",
     "@typescript-eslint/eslint-plugin": "^5.24.0",
     "@typescript-eslint/parser": "^5.24.0",
     "@typescript-eslint/typescript-estree": "^5.24.0",
-    "commitlint": "^11.0.0",
-    "dotenv-cli": "^4.0.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-react-native-wcandillon": "^3.8.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react-hooks": "^4.5.0",
     "eslint-plugin-tsc": "^2.0.0",
-    "husky": "^7.0.0",
-    "jest": "^27.0.6",
     "pod-install": "^0.1.0",
     "prettier": "^2.6.2",
     "react": "17.0.2",
     "react-native": "0.66.0",
     "react-native-reanimated": "^2.6.0",
-    "react-native-svg": "^12.3.0",
+    "react-native-jsi-view-helpers": "sergeymild/react-native-jsi-view-helpers#0.71.1",
     "release-it": "^14.2.2",
     "typescript": "4.8.4"
   },
@@ -86,11 +52,9 @@
     "react": "*",
     "react-native": "*",
     "react-native-reanimated": "^2.6.0",
-    "react-native-svg": "^12.3.0",
     "react-native-jsi-view-helpers": "sergeymild/react-native-jsi-view-helpers#0.71.1"
   },
   "dependencies": {
-    "lodash.isequal": "^4.5.0",
     "react-native-hole-view": "^3.0.0-alpha3"
   }
 }
